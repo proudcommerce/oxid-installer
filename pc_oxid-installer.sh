@@ -1,11 +1,12 @@
 #!/bin/sh
-# 
+
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+
 # @copyright (c) Proud Sourcing GmbH | 2014
+# @link github.com/proudcommerce/oxid-installer
 # @link www.proudcommerce.com
 # @package oxid-installer
 # @version 1.0.0
@@ -31,7 +32,7 @@ then
 fi
 
 # shop url
-shop_url="http://yourshop.tld/ (subdirectory configuration in 4/12)"
+shop_url="http://yourshop.tld"
 read -p "3/11 | enter shop url [$shop_url]: " shop_url_i
 if [ -n "$shop_url_i" ]
 then
@@ -39,8 +40,8 @@ then
 fi
 
 # shop url subdirectory
-shop_url_dir="ce492/"
-read -p "4/11 | enter shop subdirectory url [$shop_url_dir]: " shop_url_dir_i
+shop_url_dir=""
+read -p "4/11 | enter shop subdirectory url [/]: " shop_url_dir_i
 if [ -n "$shop_url_dir_i" ]
 then
   shop_url_dir="$shop_url_dir_i"
@@ -73,7 +74,7 @@ then
 fi
 
 # shop database user
-db_user="youruser"
+db_user="root"
 read -p "8/11 | enter mysql database user [$db_user]: " db_user_i
 if [ -n "$db_user_i" ]
 then
@@ -81,7 +82,7 @@ then
 fi
 
 # shop database password
-db_pass="yourpassword"
+db_pass="6fw8iOP3V4aISRDL8Kqp"
 read -p "9/11 | enter mysql database password [$db_pass]: " db_pass_i
 if [ -n "$db_pass_i" ]
 then
@@ -89,7 +90,7 @@ then
 fi
 
 # shop database name
-db_name="yourdbname"
+db_name="ce492"
 read -p "10/11 | enter mysql database name [$db_name]: " db_name_i
 if [ -n "$db_name_i" ]
 then
@@ -97,7 +98,7 @@ then
 fi
 
 # ioly module manager
-install_ioly=false
+install_ioly=true
 read -p "11/11 | install ioly module manager [$install_ioly]: " install_ioly_i
 if [ -n "$install_ioly_i" ]
 then
@@ -136,7 +137,7 @@ cd $shop_dir && mysql -h$db_host -u$db_user -p$db_pass $db_name < setup/sql/data
 if [ $shop_utf8 = true ]
 then
 	echo "----------"
-	echo "### setting database tu utf8"
+	echo "### setting database to utf8"
 	echo "----------"
 	cd $shop_dir && mysql -h$db_host -u$db_user -p$db_pass $db_name < setup/sql/latin1_to_utf8.sql
 	shop_utf8_config=1
@@ -147,7 +148,7 @@ then
 	echo "----------"
 	echo "### insert demodata into database"
 	echo "----------"
-	cd $shop_dir && mysql -h$db_host -u$db_user -p$db_pass $db_name < setup/sql/demodata.sql
+	cd $shop_dir && mysql -h$db_host -u$db_user -p$db_pass $db_name --default-character-set=latin1 < setup/sql/demodata.sql
 fi
 
 echo "----------"
@@ -172,6 +173,11 @@ then
 	echo "### install ioly module manager"
 	echo "----------"
 	cd $shop_dir && mkdir ioly && chmod 777 ioly/
+	cd $shop_dir && mkdir modules/ioly
+	cd $shop_dir/modules/ioly && wget https://github.com/ioly/ioly/archive/connector-oxid.zip
+	cd $shop_dir/modules/ioly && unzip connector-oxid.zip && mv ioly-connector-oxid/modules/ioly/* .
+	cd $shop_dir/modules/ioly && rm -rf ioly-connector-oxid/ && rm connector-oxid.zip
+	cd $shop_dir && chmod -R 777 modules/
 fi
 
 echo "----------"
