@@ -7,7 +7,7 @@ Install an OXID eShop within 30 seconds on your server ...
 
 download ps_oxid-installer.sh
 
-`curl -O https://github.com/proudcommerce/oxid-installer/blob/master/pc_oxid-installer.sh`
+`curl -O https://raw.githubusercontent.com/proudcommerce/oxid-installer/master/pc_oxid-installer.sh`
 
 set executable rights
 
@@ -16,6 +16,10 @@ set executable rights
 start script
 
 `sh pc_oxid-installer.sh`
+
+##Alternate Installation (Run from the web directly)
+
+`bash <(curl -s https://raw.githubusercontent.com/proudcommerce/oxid-installer/master/pc_oxid-installer.sh)`
 
 
 ## How to use
