@@ -1,24 +1,9 @@
 # OXID shell install script
 
 Install an OXID eShop within 30 seconds on your server ...
-
-
-## Features
-
-    1/11 | enter shop version [CE-4.9.2]:
-    2/11 | enter install directory [/var/www/CE-4.9.2]:
-    3/11 | enter shop url [http://yourshop.tld]: 
-    4/11 | enter shop subdirectory url [/]: 
-    5/11 | set shop utf8 mode [false]:
-    6/11 | install shop demodata [true]:
-    7/11 | enter mysql database host [localhost]:
-    8/11 | enter mysql database user [root]:
-    9/11 | enter mysql database password [6fw8iOP3V4aISRDL8Kqp]:
-    10/11 | enter mysql database name [ce492]:
-    11/11 | install ioly module manager [true]:
 	 
 
-##How to use
+##Installation
 
 download ps_oxid-installer.sh
 
@@ -33,9 +18,23 @@ start script
 `sh pc_oxid-installer.sh`
 
 
+## How to use
+
+    1/11 | enter shop version [CE-4.9.2]:
+    2/11 | enter install directory [/var/www/CE-4.9.2]:
+    3/11 | enter shop url [http://yourshop.tld]: 
+    4/11 | enter shop subdirectory url [/]: 
+    5/11 | set shop utf8 mode [false]:
+    6/11 | install shop demodata [true]:
+    7/11 | enter mysql database host [localhost]:
+    8/11 | enter mysql database user [root]:
+    9/11 | enter mysql database password [6fw8iOP3V4aISRDL8Kqp]:
+    10/11 | enter mysql database name [ce492]:
+    11/11 | install ioly module manager [true]:
+
 ##Changelog
 
-	1.0.0 - 2014-12-12 - release
+    1.0.0 - 2014-12-12 - release
 	
 	
 ##License
