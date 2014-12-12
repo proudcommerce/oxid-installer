@@ -11,13 +11,13 @@ download ps_oxid-installer.sh
 
 set executable rights
 
-`chmod 777 pc_oxid-installer.sh`
+`chmod +x pc_oxid-installer.sh`
 
 start script
 
 `sh pc_oxid-installer.sh`
 
-##Alternate Installation (Run from the web directly)
+##Alternate installation (run from the web directly)
 
 `bash <(curl -s https://raw.githubusercontent.com/proudcommerce/oxid-installer/master/pc_oxid-installer.sh)`
 
