@@ -16,7 +16,7 @@
 shop_source="https://github.com/proudcommerce/oxid-downloads.git"
 
 # shop version (git branch)
-shop_version="CE-4.9.2"
+shop_version="CE-4.10.1"
 read -p "1/11 | enter shop version [$shop_version]: " shop_version_i
 if [ -n "$shop_version_i" ]
 then
